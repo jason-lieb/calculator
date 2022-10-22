@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+.calculator {
+    margin: calc((100vh - 513px)/2) auto;
+    width: 300px;
+}
+
+.top {
+    height: 100px;
+    padding: 10px;
+}
+
+.display {
+    height: 100%;
+    font-size: 3rem;
+}
+
+.bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+    "a a a a"
+    "b c d e"
+    "f g h i"
+    "j k l m"
+    "n o p q";
+}
+
+.button {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.button:not(.clear){
+    aspect-ratio: 1 / 1;
+}
+
+.clear {
+    width: 100%;
+    aspect-ratio: 4 / 1;
+    grid-area: a;
+}
