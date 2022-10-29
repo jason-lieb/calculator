@@ -34,3 +34,12 @@ let display = function(input) {
     initialText !== '0' ? insertText = initialText + input : insertText = input;
     displayText.textContent = insertText;
 }
+// clear display function
+let clearDisplay = function() {
+    document.querySelector('.displayText').textContent = '0';
+}
+// create event listeners for buttons
+let buttons = document.querySelectorAll('.button:not(.clear)');
+buttons.forEach((button) => {button.addEventListener('click', () => display(button.textContent))});
+// create event listener and function for clear button
+document.querySelector('.clear').addEventListener('click', () => clearDisplay());

@@ -8,7 +8,7 @@ body {
     background-color: rgb(189, 232, 247);
 }
 
-.button, .display, .top {
+.button, .display {
     border: 1px solid black;
 }
 
@@ -16,7 +16,7 @@ body {
     margin: calc((100vh - 474.5px)/2) auto;
     width: 300px;
     background-color: lightgray;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
 }
 
@@ -38,6 +38,7 @@ body {
 }
 
 .bottom {
+    padding: 3px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
@@ -46,6 +47,8 @@ body {
     "f g h i"
     "j k l m"
     "n o p q";
+    justify-content: space-around;
+    gap: 3px;
 }
 
 .button:nth-of-type(14) {
@@ -61,6 +64,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 .button:hover {
