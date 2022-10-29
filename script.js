@@ -27,6 +27,10 @@ let operate = function(operator, x, y) {
     };
 }
 // display function
-let display = function() {
-    
+let display = function(input) {
+    let displayText = document.querySelector('.displayText');
+    let initialText = displayText.textContent;
+    let insertText = '';
+    initialText !== '0' ? insertText = initialText + input : insertText = input;
+    displayText.textContent = insertText;
 }

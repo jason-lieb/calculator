@@ -13,7 +13,7 @@ body {
 }
 
 .calculator {
-    margin: calc((100vh - 500px)/2) auto;
+    margin: calc((100vh - 474.5px)/2) auto;
     width: 300px;
     background-color: lightgray;
     border: 1px solid black;
