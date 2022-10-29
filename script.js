@@ -26,3 +26,7 @@ let operate = function(operator, x, y) {
         return divide(x,y);
     };
 }
+// display function
+let display = function() {
+    
+}
