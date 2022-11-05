@@ -33,22 +33,23 @@ let operate = function(operator, x, y) {
 // display function
 let display = function(input) {
     let displayText = document.querySelector('.displayText');
-    let initialText = displayText.textContent;
-    let insertText = '';
-    initialText !== '0' ? insertText = initialText + input : insertText = input;
-    displayText.textContent = insertText;
+    displayText.textContent = input;
 }
 // clear display function
 let clearDisplay = function() {
-    console.log('clear');
-    document.querySelector('.displayText').textContent = '0';
+    display('0');
     operator = undefined;
     value1 = undefined;
     value2 = undefined;
 }
+// build number function
+let buildNum = function(input) {
+  let initialText = displayText.textContent;
+  let insertText = '';
+  initialText !== '0' ? insertText = initialText + input : insertText = input;
+}
 // total function
 let triggerOperate = function(operatorButton) {
-  console.log('triggerOperate');
   if (value1 === undefined) {
     value1 = document.querySelector('.displayText').textContent;
     operator = operatorButton;
@@ -57,16 +58,16 @@ let triggerOperate = function(operatorButton) {
     let output;
     switch (operator) {
         case '+':
-            output = operate('+', value1[0], value2[0]);
+            output = operate('+', value1, value2);
             break;
         case '-':
-            output = operate('-', value1[0], value2[0]);
+            output = operate('-', value1, value2);
             break;
         case '*':
-            output = operate('*', value1[0], value2[0]);
+            output = operate('*', value1, value2);
             break;
         case '/':
-            output = operate('/', value1[0], value2[0]);
+            output = operate('/', value1, value2);
             break;
     }
     document.querySelector('.displayText').textContent = output;
@@ -78,7 +79,7 @@ let triggerOperate = function(operatorButton) {
 }
 // create event listeners for number buttons
 let buttons = document.querySelectorAll('.number');
-buttons.forEach((button) => {button.addEventListener('click', () => display(button.textContent))});
+buttons.forEach((button) => {button.addEventListener('click', () => buildNum(button.textContent))});
 // create event listner for operator buttons
 let operators = document.querySelectorAll('.operator')
 operators.forEach((operator) => {operator.addEventListener('click', () => triggerOperate(operator.textContent))});
