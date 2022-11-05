@@ -71,6 +71,10 @@ body {
     background-color: gray;
 }
 
+.clear:hover {
+    background-color: rgb(224, 72, 72);
+}
+
 .button:not(.clear){
     aspect-ratio: 1 / 1;
 }

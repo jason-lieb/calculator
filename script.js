@@ -1,3 +1,7 @@
+// initialize variables
+let value1;
+let value2;
+let operator;
 // add function
 let add = function (x, y) {
     return x + y;
@@ -16,13 +20,13 @@ let divide = function (x, y) {
 };
 // operate function
 let operate = function(operator, x, y) {
-    if (operator === 'add') {
+    if (operator === '+') {
         return add(x,y);
-    } else if (operator === 'subtract') {
+    } else if (operator === '-') {
         return subtract(x,y);
-    } else if (operator === 'multiply') {
+    } else if (operator === '*') {
         return multiply(x,y);
-    } else if (operator === 'divide') {
+    } else if (operator === '/') {
         return divide(x,y);
     };
 }
@@ -36,10 +40,47 @@ let display = function(input) {
 }
 // clear display function
 let clearDisplay = function() {
+    console.log('clear');
     document.querySelector('.displayText').textContent = '0';
+    operator = undefined;
+    value1 = undefined;
+    value2 = undefined;
 }
-// create event listeners for buttons
-let buttons = document.querySelectorAll('.button:not(.clear)');
+// total function
+let triggerOperate = function(operatorButton) {
+  console.log('triggerOperate');
+  if (value1 === undefined) {
+    value1 = document.querySelector('.displayText').textContent;
+    operator = operatorButton;
+  } else {
+    value2 = document.querySelector('.displayText').textContent;
+    let output;
+    switch (operator) {
+        case '+':
+            output = operate('+', value1[0], value2[0]);
+            break;
+        case '-':
+            output = operate('-', value1[0], value2[0]);
+            break;
+        case '*':
+            output = operate('*', value1[0], value2[0]);
+            break;
+        case '/':
+            output = operate('/', value1[0], value2[0]);
+            break;
+    }
+    document.querySelector('.displayText').textContent = output;
+    if (operatorButton !== '=') {
+      value1 = output;
+      operator = operatorButton;
+    }
+  }   
+}
+// create event listeners for number buttons
+let buttons = document.querySelectorAll('.number');
 buttons.forEach((button) => {button.addEventListener('click', () => display(button.textContent))});
-// create event listener and function for clear button
+// create event listner for operator buttons
+let operators = document.querySelectorAll('.operator')
+operators.forEach((operator) => {operator.addEventListener('click', () => triggerOperate(operator.textContent))});
+// create event listener for clear button
 document.querySelector('.clear').addEventListener('click', () => clearDisplay());
