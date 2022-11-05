@@ -28,13 +28,13 @@ let display = function(input) {
 let operate = function(operator, x, y) {
   if (y === undefined) y = 0;
   if (operator === '+') {
-    return add(x,y);
+    return Math.round(add(x,y) * 1000000000) / 1000000000;
   } else if (operator === '-') {
-    return subtract(x,y);
+    return Math.round(subtract(x,y) * 1000000000) / 1000000000;
   } else if (operator === '*') {
-    return multiply(x,y);
+    return Math.round(multiply(x,y) * 1000000000) / 1000000000;
   } else if (operator === '/') {
-    return y === '0' ? 'ERROR' : divide(x,y);
+    return y === '0' ? 'ERROR' : Math.round(divide(x,y) * 1000000000) / 1000000000;
   };
 }
 // clear display function
@@ -125,11 +125,10 @@ document.querySelector('.clear').addEventListener('click', () => clearDisplay())
 
 PROBLEMS
 
-1. Long numbers / decimals run off calculator -> Need to round
-2. Highlight saved operator
-3. 6=6= -> Blank Display
-4. 2+2=+3= -> NaN
-5. Refactor code
-6. Backspace button or keyboard support in future
+1. Highlight saved operator
+2. 6=6= -> Blank Display
+3. 2+2=+3= -> NaN
+4. Refactor code
+5. Backspace button or keyboard support in future
 
 */
