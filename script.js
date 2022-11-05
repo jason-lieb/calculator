@@ -119,3 +119,17 @@ let operators = document.querySelectorAll('.operator')
 operators.forEach((operator) => {operator.addEventListener('click', () => triggerOperate(operator.textContent))});
 // create event listener for clear button
 document.querySelector('.clear').addEventListener('click', () => clearDisplay());
+
+
+/*
+
+PROBLEMS
+
+1. Long numbers / decimals run off calculator -> Need to round
+2. Highlight saved operator
+3. 6=6= -> Blank Display
+4. 2+2=+3= -> NaN
+5. Refactor code
+6. Backspace button or keyboard support in future
+
+*/
