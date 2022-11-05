@@ -4,57 +4,79 @@ let value2;
 let operator;
 // add function
 let add = function (x, y) {
-    return x + y;
+  return (+x) + (+y);
 };
 // subtract function
 let subtract = function (x, y) {
-    return x - y;
+  return (+x) - (+y);
 };
 // multiply function
 let multiply = function (x, y) {
-    return x * y;
+  return (+x) * (+y);
 };
 // divide function
 let divide = function (x, y) {
-    return x / y;
+  return (+x) / (+y);
 };
 // operate function
 let operate = function(operator, x, y) {
-    if (operator === '+') {
-        return add(x,y);
-    } else if (operator === '-') {
-        return subtract(x,y);
-    } else if (operator === '*') {
-        return multiply(x,y);
-    } else if (operator === '/') {
-        return divide(x,y);
-    };
+  if (operator === '+') {
+      return add(x,y);
+  } else if (operator === '-') {
+      return subtract(x,y);
+  } else if (operator === '*') {
+      return multiply(x,y);
+  } else if (operator === '/') {
+      return divide(x,y);
+  };
 }
 // display function
 let display = function(input) {
-    let displayText = document.querySelector('.displayText');
-    displayText.textContent = input;
+  let displayText = document.querySelector('.displayText');
+  displayText.textContent = input;
 }
 // clear display function
 let clearDisplay = function() {
-    display('0');
-    operator = undefined;
-    value1 = undefined;
-    value2 = undefined;
+  display('0');
+  operator = undefined;
+  value1 = undefined;
+  value2 = undefined;
 }
 // build number function
 let buildNum = function(input) {
-  let initialText = displayText.textContent;
-  let insertText = '';
-  initialText !== '0' ? insertText = initialText + input : insertText = input;
+  if (operator === undefined) {
+    if (value1 === undefined) {
+      if (input === '.') {
+        value1 = '0.';
+        display(value1);
+      } else {
+        value1 = input;
+        display(value1);
+      }
+    } else {
+      value1 += input;
+      display(value1);
+    }
+  } else {
+    if (value2 === undefined) {
+      if (input === '.') {
+        value2 = '0.';
+        display(value2);
+      } else {
+        value2 = input;
+        display(value2);
+      }
+    } else {
+      value2 += input;
+      display(value2);
+    }
+  }
 }
 // total function
 let triggerOperate = function(operatorButton) {
-  if (value1 === undefined) {
-    value1 = document.querySelector('.displayText').textContent;
+  if (operator === undefined) {
     operator = operatorButton;
   } else {
-    value2 = document.querySelector('.displayText').textContent;
     let output;
     switch (operator) {
         case '+':
@@ -70,10 +92,12 @@ let triggerOperate = function(operatorButton) {
             output = operate('/', value1, value2);
             break;
     }
-    document.querySelector('.displayText').textContent = output;
+    value1 = output;
+    display(value1);
     if (operatorButton !== '=') {
-      value1 = output;
       operator = operatorButton;
+    } else {
+      operator = undefined;
     }
   }   
 }
