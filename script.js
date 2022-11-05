@@ -2,38 +2,40 @@
 let value1;
 let value2;
 let operator;
+let complete = false;
 // add function
 let add = function (x, y) {
   return ((+x) + (+y)).toString();
-};
+}
 // subtract function
 let subtract = function (x, y) {
   return ((+x) - (+y)).toString();
-};
+}
 // multiply function
 let multiply = function (x, y) {
   return ((+x) * (+y)).toString();
-};
+}
 // divide function
 let divide = function (x, y) {
   return ((+x) / (+y)).toString();
-};
-// operate function
-let operate = function(operator, x, y) {
-  if (operator === '+') {
-      return add(x,y);
-  } else if (operator === '-') {
-      return subtract(x,y);
-  } else if (operator === '*') {
-      return multiply(x,y);
-  } else if (operator === '/') {
-      return divide(x,y);
-  };
 }
 // display function
 let display = function(input) {
   let displayText = document.querySelector('.displayText');
   displayText.textContent = input;
+}
+// operate function
+let operate = function(operator, x, y) {
+  if (y === undefined) y = 0;
+  if (operator === '+') {
+    return add(x,y);
+  } else if (operator === '-') {
+    return subtract(x,y);
+  } else if (operator === '*') {
+    return multiply(x,y);
+  } else if (operator === '/') {
+    return y === '0' ? 'ERROR' : divide(x,y);
+  };
 }
 // clear display function
 let clearDisplay = function() {
@@ -41,9 +43,11 @@ let clearDisplay = function() {
   operator = undefined;
   value1 = undefined;
   value2 = undefined;
+  complete = false;
 }
 // build number function
 let buildNum = function(input) {
+  if (complete === true) value1 = undefined;
   if (operator === undefined) {
     if (value1 === undefined) {
       if (input === '.') {
@@ -53,6 +57,7 @@ let buildNum = function(input) {
         value1 = input;
         display(value1);
       }
+    } else if (input === '.' && value1.indexOf('.') !== -1) {
     } else {
       value1 += input;
       display(value1);
@@ -66,11 +71,13 @@ let buildNum = function(input) {
         value2 = input;
         display(value2);
       }
+    } else if (input === '.' && value2.indexOf('.') !== -1) {
     } else {
       value2 += input;
       display(value2);
     }
   }
+  complete = false;
 }
 // total function
 let triggerOperate = function(operatorButton) {
@@ -97,8 +104,10 @@ let triggerOperate = function(operatorButton) {
     display(value1);
     if (operatorButton !== '=') {
       operator = operatorButton;
+      complete = false;
     } else {
       operator = undefined;
+      complete = true;
     }
   }   
 }
