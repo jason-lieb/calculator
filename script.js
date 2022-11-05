@@ -4,19 +4,19 @@ let value2;
 let operator;
 // add function
 let add = function (x, y) {
-  return (+x) + (+y);
+  return ((+x) + (+y)).toString();
 };
 // subtract function
 let subtract = function (x, y) {
-  return (+x) - (+y);
+  return ((+x) - (+y)).toString();
 };
 // multiply function
 let multiply = function (x, y) {
-  return (+x) * (+y);
+  return ((+x) * (+y)).toString();
 };
 // divide function
 let divide = function (x, y) {
-  return (+x) / (+y);
+  return ((+x) / (+y)).toString();
 };
 // operate function
 let operate = function(operator, x, y) {
@@ -93,6 +93,7 @@ let triggerOperate = function(operatorButton) {
             break;
     }
     value1 = output;
+    value2 = undefined;
     display(value1);
     if (operatorButton !== '=') {
       operator = operatorButton;
