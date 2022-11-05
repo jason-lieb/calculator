@@ -125,10 +125,11 @@ document.querySelector('.clear').addEventListener('click', () => clearDisplay())
 
 PROBLEMS
 
-1. Highlight saved operator
-2. 6=6= -> Blank Display
-3. 2+2=+3= -> NaN
-4. Refactor code
-5. Backspace button or keyboard support in future
+-> Overflow is still possible if number is > 10
+-> Highlight saved operator
+-> 6=6= -> Blank Display
+-> 2+2=+3= -> NaN
+-> Refactor code
+-> Backspace button or keyboard support in future
 
 */
